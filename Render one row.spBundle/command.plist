@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>author</key>
+	<string>org.work4labs.olefloch</string>
+	<key>category</key>
+	<string></string>
+	<key>command</key>
+	<string>#!/usr/bin/env python
+
+import csv
+from string import Template
+import sys
+
+
+no_row = False
+
+try:
+    row = csv.DictReader(sys.stdin).next().iteritems()
+except StopIteration as e:
+    no_row = True
+
+content = ''
+
+if not no_row:	
+	for key, value in row:
+		content += '&lt;tr&gt;&lt;td&gt;&lt;strong&gt;%s&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;' % (key, value)
+
+print '&lt;html&gt;&lt;body&gt;&lt;table&gt;%s&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;' % content
+</string>
+	<key>contact</key>
+	<string>byrsybpu@jbex4ynof.pbz</string>
+	<key>description</key>
+	<string>Display rows as vertical table</string>
+	<key>input</key>
+	<string>selectedtablerowsascsv</string>
+	<key>internalKeyEquivalent</key>
+	<dict>
+		<key>characters</key>
+		<string>7</string>
+		<key>keyCode</key>
+		<integer>26</integer>
+		<key>modifierFlags</key>
+		<integer>1048576</integer>
+	</dict>
+	<key>keyEquivalent</key>
+	<string>@7</string>
+	<key>name</key>
+	<string>View one row</string>
+	<key>output</key>
+	<string>showashtml</string>
+	<key>scope</key>
+	<string>datatable</string>
+	<key>trigger</key>
+	<string>tablerowchanged</string>
+	<key>uuid</key>
+	<string>2D0BE719-6649-4582-BFDE-7061E0EF84B5</string>
+	<key>withblob</key>
+	<string>exclude</string>
+</dict>
+</plist>
